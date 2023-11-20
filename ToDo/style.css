@@ -1,0 +1,105 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    background-color: aliceblue;
+}
+
+header{
+    display: flex;
+    justify-content: space-around;
+    background-color: antiquewhite;
+    height: 50px;
+    margin-top: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+header .clear-btn{
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+
+
+.container{
+    position: relative;
+    top: 20px;
+    margin-left: 100px;
+    margin-right: 100px;
+    height: 500px;
+}
+
+#form-input{
+    display: grid;
+    place-items: center;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+#taskInput{
+    padding: 10px;
+    width: 250px;
+    border-radius: 8px;
+    border: 1px solid ;
+}
+
+#priority-input{
+    background-color: white;
+    margin-top: 10px;
+    padding: 10px;
+    width: 270px;
+    border: 8px;
+}
+.error{
+    padding: 10px;
+    background-color: red;
+    color: white;
+    width: 250px;
+    margin-top: 10px;
+    visibility: hidden;
+}
+#addTask{
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background-color: aqua;
+    margin-top: 10px;
+}
+h4{
+    text-align: center;
+    font-size: 20px;
+}
+
+.tasks{
+    list-style-type: none;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.task{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: antiquewhite;
+    margin-top: 10px;
+}
+
+.li-components{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    width: 100px;   
+    text-decoration: line-through; 
+}
+
+.priority{
+    border: none;
+    padding: 8px;
+    color: white;
+}
