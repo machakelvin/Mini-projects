@@ -1,6 +1,4 @@
 const form = document.getElementById('form-input')
-const checkbox = document.createElement('input')
-const div = document.createElement('div')
 
 
 function onSubmit (e){
@@ -33,11 +31,13 @@ function onSubmit (e){
     function taskComponent (){
         const ul = document.querySelector('.tasks')
         const li = document.createElement('li')
+        const div = document.createElement('div')
         div.className = 'li-components'
         li.className = 'task'
         li.textContent = itemInput
         priorityChoice.className = 'priority'
         priorityChoice.textContent = priority
+        const checkbox = document.createElement('input')
         checkbox.setAttribute('type', 'checkbox')
         div.appendChild(checkbox)
         div.appendChild(priorityChoice)
@@ -45,17 +45,9 @@ function onSubmit (e){
         ul.appendChild(li)
         console.log(li);
     }
+    
 }
 
 
-function TaskComplete(e){
-    const isChecked = e.target.checked
-    if(isChecked){
-        div.parentElement.classList.style.textDecorationStyle  = 'line-through'
-
-        console.log('checked');
-    }
-}
 
 form.addEventListener('submit', onSubmit)
-checkbox.addEventListener('input', TaskComplete)

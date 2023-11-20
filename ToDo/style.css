@@ -94,8 +94,7 @@ h4{
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
-    width: 100px;   
-    text-decoration: line-through; 
+    width: 100px; 
 }
 
 .priority{
