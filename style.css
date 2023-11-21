@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    height: 100%;
+    background: rgb(1, 4, 44);
+   
+}
+
+header{
+    color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(14, 14, 95);
+    font-family: 'Josefin Sans', sans-serif;
+    height: 50px;
+    padding: 20px;
+}
+header h1{
+    font-style: italic;
+}
+
+.profile-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-top: -5px;
+}
+
+
+
+
+.hero{
+    height: 50vh;
+    color: white;
+    font-family: 'Josefin Sans', sans-serif;
+    margin-top: 20px;
+    display: grid;
+    place-items: center;
+    gap: 10;
+}
+
+.hero h2{
+    font-weight: bold;
+}
+
+.hero h2 span{
+    color: rgb(253, 114, 114);
+}
+
+.hero img {
+    width: 350px;
+}
+.hero p{
+    color: rgb(253, 114, 114);
+    font-size: 18px;
+}
+
+
+
+
+.project-contanier{
+    position: relative;
+    top: 45px;
+    text-align: center;
+    color: white;
+}
+
+.project-contanier h2 {
+    font-family: 'Josefin Sans', sans-serif;
+    margin-bottom: 50px;
+    text-decoration: underline;
+    text-underline-offset: 8px;
+} 
+
+.projects{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+        
+}
+
+.project-card{
+    background-color: rgb(14, 14, 95);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    
+}
+.project-card img {
+    object-fit: cover;
+    width: 100%;
+}
+.project-card span {
+    font-family: 'Josefin Sans', sans-serif;
+    text-decoration: none;
+    color: white;
+}
