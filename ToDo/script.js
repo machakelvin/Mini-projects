@@ -21,7 +21,7 @@ function taskComponents(task, priority, Choice){
     return ul;
 }
 
-taskComponents('pick up dad', 'High')
+
 
 function onSubmit(e){
     e.preventDefault()
