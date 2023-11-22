@@ -92,7 +92,7 @@ h4{
 
 .li-components{
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     justify-content: space-between;
     width: 100px; 
 }
@@ -100,5 +100,6 @@ h4{
 .priority{
     border: none;
     padding: 8px;
-    color: white;
+    color: black;
+    background-color: aqua;
 }
