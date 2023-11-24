@@ -57,6 +57,23 @@ function clearItems(e){
     checkUI()
 }
 
+// filter items
+function filterItems(e){
+    const text = e.target.value.toLowerCase()
+    const items = itemList.querySelectorAll('li')
+    
+    items.forEach(item =>{
+        const itemName = item.firstChild.textContent.toLocaleLowerCase()
+        if(itemName.indexOf(text) != -1){
+            item.style.display = 'flex'
+        }else{
+            item.style.display = 'none'
+        }
+        checkUI()
+    })
+}
+
+
 // removes the filter & clear btn on load
 function checkUI (){
     const items = itemList.querySelectorAll('li')
@@ -67,12 +84,19 @@ function checkUI (){
     }else{
         clearBtn.style.display = 'block'
         filter.style.display = 'block'
-
+    }
+    if(items.length && filter.value){
+        clearBtn.style.display = 'none'
+        filter.style.display = 'none'
+        
     }
 }
-checkUI()
+
 
 // Event listeners
 itemForm.addEventListener('submit', addItem)
 itemList.addEventListener('click', removeItem)
 clearBtn.addEventListener('click', clearItems)
+filter.addEventListener('input', filterItems)
+
+checkUI()
