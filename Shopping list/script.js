@@ -5,7 +5,7 @@ const clearBtn = document.getElementById('clear')
 const filter = document.querySelector('.filter')
 
 
-function addItem(e){
+function onAddItemSubmit(e){
     e.preventDefault()
     const newItem = itemInput.value
     // validate input
@@ -13,17 +13,41 @@ function addItem(e){
         alert('Please add an item')
         return
     }
+    //create item DOM
+    addItemToDOM(newItem)
+
+    // add item to local storage
+    addItemToStorage(newItem)
+
     
+    checkUI()
+    itemInput.value = ''
+}
+
+// add to DOM
+function addItemToDOM(item){
     //Create list item
     const li = document.createElement('li')
-    li.appendChild(document.createTextNode(newItem))
+    li.appendChild(document.createTextNode(item))
     const button = createButton('button')
     li.appendChild(button)
     // adds items to DOM
     itemList.appendChild(li)
-    
-    checkUI()
-    itemInput.value = ''
+
+}
+
+function addItemToStorage(item){
+    let itemsFromStorage;
+    if(localStorage.getItem('items')=== null){
+        itemsFromStorage = []
+    }else{
+        itemsFromStorage = JSON.parse(localStorage.getItem('items'))
+    }
+    //add new item to array
+    itemsFromStorage.push(item)
+    // convert to JSON  string & set to local storage
+    localStorage.setItem('items', JSON.stringify(itemsFromStorage))
+
 }
 
 
@@ -94,9 +118,11 @@ function checkUI (){
 
 
 // Event listeners
-itemForm.addEventListener('submit', addItem)
+itemForm.addEventListener('submit', onAddItemSubmit)
 itemList.addEventListener('click', removeItem)
 clearBtn.addEventListener('click', clearItems)
 filter.addEventListener('input', filterItems)
 
 checkUI()
+
+localStorage.removeItem('name')
