@@ -19,8 +19,10 @@ function addItem(e){
     li.appendChild(document.createTextNode(newItem))
     const button = createButton('button')
     li.appendChild(button)
+    // adds items to DOM
     itemList.appendChild(li)
     
+    checkUI()
     itemInput.value = ''
 }
 
@@ -38,7 +40,11 @@ function createButton(classes){
 // removes single item clicked
 function removeItem(e){
     if(e.target.classList.contains('button')){
-        e.target.parentElement.remove()
+        if(confirm('Are you sure?')){
+            e.target.parentElement.remove()
+
+            checkUI()
+        }
     }
 }
 
@@ -48,8 +54,23 @@ function clearItems(e){
     while(itemList.firstChild){
         itemList.removeChild(itemList.firstChild)
     }
+    checkUI()
 }
 
+// removes the filter & clear btn on load
+function checkUI (){
+    const items = itemList.querySelectorAll('li')
+    console.log(items);
+    if(items.length === 0){
+        clearBtn.style.display = 'none'
+        filter.style.display = 'none'
+    }else{
+        clearBtn.style.display = 'block'
+        filter.style.display = 'block'
+
+    }
+}
+checkUI()
 
 // Event listeners
 itemForm.addEventListener('submit', addItem)
