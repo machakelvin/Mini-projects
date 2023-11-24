@@ -1,6 +1,8 @@
 const itemForm = document.getElementById('item-form')
 const itemInput = document.getElementById('item-input')
 const itemList = document.getElementById('item-list')
+const clearBtn = document.getElementById('clear')
+const filter = document.querySelector('.filter')
 
 
 function addItem(e){
@@ -22,6 +24,9 @@ function addItem(e){
     itemInput.value = ''
 }
 
+
+//creating button
+
 function createButton(classes){
     const button = document.createElement('button')
     button.className = classes
@@ -30,9 +35,23 @@ function createButton(classes){
 
 }
 
+// removes single item clicked
+function removeItem(e){
+    if(e.target.classList.contains('button')){
+        e.target.parentElement.remove()
+    }
+}
 
 
+// clears all items 
+function clearItems(e){
+    while(itemList.firstChild){
+        itemList.removeChild(itemList.firstChild)
+    }
+}
 
 
-// Event listenets
+// Event listeners
 itemForm.addEventListener('submit', addItem)
+itemList.addEventListener('click', removeItem)
+clearBtn.addEventListener('click', clearItems)
