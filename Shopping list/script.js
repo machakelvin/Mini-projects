@@ -68,14 +68,16 @@ function getItemFromStorage(){
 function createButton(classes){
     const button = document.createElement('button')
     button.className = classes
-    button.textContent = '*'
+    const i = document.createElement('span')
+    i.className = 'bi bi-x-circle'
+    button.appendChild(i)
     return button
 
 }
 
 function onItemClick(e){
-    if(e.target.classList.contains('button')){
-        removeItem(e.target.parentElement)
+    if(e.target.parentElement.classList.contains('button')){
+        removeItem(e.target.parentElement.parentElement)
     }
     
 }
@@ -86,9 +88,9 @@ function removeItem(item){
         //remove item from DOM
         item.remove()
         const content = item.textContent
+        //textContent takes all text even those in child elements
         // remove item from storage
         removeItemFromStorage(content)
-        console.log(removeItemFromStorage('cheese'))
     
         checkUI()
     }
