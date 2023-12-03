@@ -8,22 +8,29 @@ const Todo = document.querySelector('.taskHeading')
 
 
 //display task from storage
-// function displayItems(){
-//     const itemsFromStorage = getTaskFromStorage()
-//     const priorityFromStorage = getPriorityFromStorage()
-//     itemsFromStorage.forEach(task => addItemToDOM(task))
-//     UIchecker()
-// }
+function displayItems() {
+    const itemsFromStorage = getTaskFromStorage();
+    const priorityFromStorage = getPriorityFromStorage();
+
+    // Iterate through tasks and their priorities
+    itemsFromStorage.forEach((task, index) => {
+        const priority = priorityFromStorage[index]; // Get the corresponding priority
+        addItemToDOM(task, priority);
+    });
+
+    UIchecker();
+}
 function onAddItemSubmit (e){
     e.preventDefault()
     const newTask = taskInput.value
+    const newPriority = priorityInput.value
     
     if(newTask === ''){
         alert('Please enter task')
     }
 
     // add task to DOM
-    addItemToDOM(newTask)
+    addItemToDOM(newTask, newPriority)
 
     //add task to localstorage
     addTaskToStorage(newTask)
@@ -34,11 +41,15 @@ function onAddItemSubmit (e){
 }
 
 //add to DOM
-function addItemToDOM(task){
+function addItemToDOM(task, priority){
     const li = document.createElement('li')
     li.appendChild(document.createTextNode(task))
     li.className = 'task'
+    const priorityValue = createPriority(priority)
+    const remove = removeBtn('removeTask')
     const div = taskContainer('li-components')
+    div.appendChild(priorityValue)
+    div.appendChild(remove)
     li.appendChild(div)
     ul.appendChild(li)
 
@@ -86,19 +97,15 @@ function getPriorityFromStorage(){
 function taskContainer(classes){
     const div = document.createElement('div')
     div.className = classes
-    const priorityValue = createPriority('priority')
-    div.appendChild(priorityValue)
-    const remove = removeBtn('removeTask')
-    div.appendChild(remove)
     return div
 }
 
 
 // create prioriy
-function createPriority(classes){
-    const newPriority = priorityInput.value
+function createPriority(newPriority){
+    
     const span = document.createElement('span')
-    span.className = classes
+    span.className = 'priority'
     span.textContent = newPriority
     
     //priority level change of color
@@ -160,7 +167,7 @@ function UIchecker(){
 taskform.addEventListener('submit', onAddItemSubmit)
 clearBtn.addEventListener('click', onclearAll)
 ul.addEventListener('click', onTaskClick)
-//document.addEventListener('DOMContentLoaded', displayItems)
+document.addEventListener('DOMContentLoaded', displayItems)
 
 UIchecker()
 
