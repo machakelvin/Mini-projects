@@ -34,6 +34,7 @@ header .clear-btn{
     height: 500px;
 }
 
+/* start input box for task and priority */
 #form-input{
     display: grid;
     place-items: center;
@@ -71,6 +72,9 @@ header .clear-btn{
     background-color: aqua;
     margin-top: 10px;
 }
+/* end of task and .priority */
+
+/* start task display */
 h4{
     text-align: center;
     font-size: 20px;
@@ -102,4 +106,9 @@ h4{
     padding: 8px;
     color: black;
     background-color: aqua;
+}
+
+.removeTask{
+    background-color: inherit;
+    border: none;
 }

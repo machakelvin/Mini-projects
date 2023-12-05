@@ -1,0 +1,93 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    display: grid;
+    place-items: center;
+    background-color: aliceblue;
+}
+
+header h1{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    letter-spacing: 2px;
+}
+
+#item-form{
+    margin-top: 20px;
+    padding: 20px;
+    width: 500px;
+    display: grid;
+    place-items: center;
+}
+
+.form-input{
+    padding: 10px;
+    font-size: 18px;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+.btn{
+    margin-top: 10px;
+    padding: 10px;
+    width: 100px;
+    border: none;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.filter{
+    margin-top: 10px;
+    padding: 20px;
+    width: 500px;
+    display: grid;
+    place-items: center;
+}
+.form-input-filter{
+    padding: 10px;
+    font-size: 18px;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+.items{
+    margin-top: 10px;
+}
+
+.items li{
+    list-style-type: none;
+    display: flex;
+    background-color: #3498db;
+    padding: 10px;
+    margin: 10px;
+    justify-content: space-between;
+}
+
+li button{
+    border: none;
+    width: 15px;
+    font-size: 20px;
+    background-color: transparent;
+    color: red;
+}
+
+
+.clear-div{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+.btn-clear{
+    padding: 10px;
+    border: none;
+    background-color: #3498db;
+    color: white;
+    width: 100px;
+    border-radius: 8px;
+}

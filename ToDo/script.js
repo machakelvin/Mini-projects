@@ -1,64 +1,175 @@
-const form = document.getElementById('form-input')
-const ul = document.querySelector('.tasks')
-function taskComponents(task, priority, Choice){
-    const li = document.createElement('li')
-    li.className = 'task'
-    li.textContent = task
-    const div = document.createElement('div')
-    div.className = 'li-components'
-    const priorityChoice = document.createElement('span')
-    priorityChoice.className = 'priority'
-    priorityChoice.textContent = priority
-    const checkbox = document.createElement('input')
-    checkbox.setAttribute('type', 'checkbox')
+const taskform = document.getElementById('form-input')
+const taskInput = document.getElementById('taskInput')
+const priorityInput = document.getElementById('priority-input')
+const ul = document.getElementById('tasks')
+const clearBtn = document.querySelector('.clear-btn')
+const Todo = document.querySelector('.taskHeading')
 
-    div.appendChild(priorityChoice)
-    div.appendChild(checkbox)
+
+
+//display task from storage
+function displayItems() {
+    const itemsFromStorage = getTaskFromStorage();
+    const priorityFromStorage = getPriorityFromStorage();
+
+    // Iterate through tasks and their priorities
+    itemsFromStorage.forEach((task, index) => {
+        const priority = priorityFromStorage[index]; // Get the corresponding priority
+        addItemToDOM(task, priority);
+    });
+
+    UIchecker();
+}
+function onAddItemSubmit (e){
+    e.preventDefault()
+    const newTask = taskInput.value
+    const newPriority = priorityInput.value
+    
+    if(newTask === ''){
+        alert('Please enter task')
+    }
+
+    // add task to DOM
+    addItemToDOM(newTask, newPriority)
+
+    //add task to localstorage
+    addTaskToStorage(newTask)
+
+    taskInput.value = ' '
+
+    UIchecker()
+}
+
+//add to DOM
+function addItemToDOM(task, priority){
+    const li = document.createElement('li')
+    li.appendChild(document.createTextNode(task))
+    li.className = 'task'
+    const priorityValue = createPriority(priority)
+    const remove = removeBtn('removeTask')
+    const div = taskContainer('li-components')
+    div.appendChild(priorityValue)
+    div.appendChild(remove)
     li.appendChild(div)
     ul.appendChild(li)
 
+    return ul
+}
+
+//add to storage
+function addTaskToStorage(task){
+    const itemsFromStorage = getTaskFromStorage()
     
-    return ul;
+    //add new item to array
+    itemsFromStorage.push(task)
+    // convert to JSON  string & set to local storage
+    localStorage.setItem('tasks', JSON.stringify(itemsFromStorage))
+}
+function addPriorityToStorage(priority){
+    const itemsFromStorage = getPriorityFromStorage()
+    
+    //add new item to array
+    itemsFromStorage.push(priority)
+    // convert to JSON  string & set to local storage
+    localStorage.setItem('priority', JSON.stringify(itemsFromStorage))
 }
 
 
-
-function onSubmit(e){
-    e.preventDefault()
-    const taskInput = document.getElementById('taskInput').value
-    const priority = document.getElementById('priority-input').value
-    
-    console.log(taskInput, priority);
-    if(taskInput === '' && priority === ''){
-        const error = document.createElement('span')
-        error.className = 'error'
-        error.textContent = 'please fill the field'
-        error.style.visibility = 'visible'
-        form.appendChild(error)
-        console.log(error);
+function getTaskFromStorage(){
+    let itemsFromStorage;
+    if(localStorage.getItem('tasks')=== null){
+        itemsFromStorage = []
     }else{
-        taskComponents(taskInput,priority)
-        
+        itemsFromStorage = JSON.parse(localStorage.getItem('tasks'))
     }
-    changeOnPriority()
-
+    return itemsFromStorage
+}
+function getPriorityFromStorage(){
+    let itemsFromStorage;
+    if(localStorage.getItem('priority')=== null){
+        itemsFromStorage = []
+    }else{
+        itemsFromStorage = JSON.parse(localStorage.getItem('priority'))
+    }
+    return itemsFromStorage
+}
+// create container for li components
+function taskContainer(classes){
+    const div = document.createElement('div')
+    div.className = classes
+    return div
 }
 
-// function to change bg of priority on li element based selected
-//function changeOnPriority (){
+
+// create prioriy
+function createPriority(newPriority){
     
-//    if(priority === 'High'){
-//        priorityChoice.style.backgroundColor = 'green'
-//    }else if(priority === 'Medium'){
-//        priorityChoice.style.backgroundColor = 'yellow'
-//        priorityChoice.style.color = 'black'
-//    }else{
- //       priorityChoice.style.backgroundColor = 'orange'
-//   }
+    const span = document.createElement('span')
+    span.className = 'priority'
+    span.textContent = newPriority
     
-//}
+    //priority level change of color
+    if(newPriority === 'High'){
+        span.style.backgroundColor = 'green'
+        span.style.color = 'white'
+    }else if(newPriority === 'Medium'){
+        span.style.backgroundColor = 'blue'
+        span.style.color = 'white'
+    }else{
+        span.style.backgroundColor = 'yellow'
+    }
+    addPriorityToStorage(newPriority)
+    return span
+}
+
+function removeBtn(classes){
+    const button = document.createElement('button')
+    button.className = classes
+    const i = document.createElement('i')
+    i.className = 'bi bi-x-circle'
+    button.appendChild(i)
+    return button
+}
+
+function onTaskClick(e){
+    if(e.target.parentElement.classList.contains('removeTask')){
+        removeTask(e.target.parentElement.parentElement.parentElement)
+    }
+}
+//removing single task from DOM
+function removeTask(task){
+    if(confirm('Are you sure?')){
+        task.remove()
+    }
+}
+
+// removing all items from DOM
+function onclearAll(){
+    while(ul.firstChild){
+        ul.removeChild(ul.firstChild)
+    }
+}
 
 
 
+function UIchecker(){
+    const task = ul.querySelectorAll('li')
+    if(task.length === 0){
+        Todo.style.display = 'none'
+    }else{
+        Todo.style.display = 'block'
+    }
+}
 
-form.addEventListener('submit', onSubmit)
+
+
+//event listeners
+taskform.addEventListener('submit', onAddItemSubmit)
+clearBtn.addEventListener('click', onclearAll)
+ul.addEventListener('click', onTaskClick)
+document.addEventListener('DOMContentLoaded', displayItems)
+
+UIchecker()
+
+// localStorage.removeItem('tasks')
+// localStorage.removeItem('priority')
