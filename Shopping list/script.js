@@ -3,7 +3,8 @@ const itemInput = document.getElementById('item-input')
 const itemList = document.getElementById('item-list')
 const clearBtn = document.getElementById('clear')
 const filter = document.querySelector('.filter')
-
+const formBtn = itemForm.querySelector('.btn')
+let isEditMode = false;
 
 function displayItems(){
     const itemsFromStorage = getItemFromStorage()
@@ -79,7 +80,20 @@ function onItemClick(e){
     if(e.target.parentElement.classList.contains('button')){
         removeItem(e.target.parentElement.parentElement)
     }
-    
+    else{
+        setItemToEdit(e.target)
+    }
+}
+
+function setItemToEdit(item){
+    isEditMode = true;
+    itemList.querySelectorAll('li')
+    .forEach((i) => i.classList.remove('edit-mode'))
+    item.classList.add('edit-mode');
+    formBtn.innerHTML = '<i class="bi bi-pencil"></i> Update item'
+    const editedItem = item.innerText
+    itemInput.value = editedItem
+    formBtn.style.backgroundColor = '#22bb22'
 }
 
 // removes single item clicked
