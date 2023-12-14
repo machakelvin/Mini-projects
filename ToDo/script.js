@@ -4,6 +4,8 @@ const priorityInput = document.getElementById('priority-input')
 const ul = document.getElementById('tasks')
 const clearBtn = document.querySelector('.clear-btn')
 const Todo = document.querySelector('.taskHeading')
+const submitBtn = taskform.querySelector('#addTask')
+let isEditMode = false
 
 
 
@@ -29,13 +31,25 @@ function onAddItemSubmit (e){
         alert('Please enter task')
     }
 
+    //check for edit mode
+    if(isEditMode){
+        const itemToEdit = ul.querySelector('.edit-mode')
+        console.log(itemToEdit.firstChild.textContent);
+        removeTaskFromStorage(itemToEdit.firstChild.textContent)
+        itemToEdit.classList.remove('edit-mode')
+        itemToEdit.remove()
+
+        
+        isEditMode = false
+    }
+
     // add task to DOM
     addItemToDOM(newTask, newPriority)
 
     //add task to localstorage
     addTaskToStorage(newTask)
 
-    taskInput.value = ' '
+    taskInput.value = ''
 
     UIchecker()
 }
@@ -136,9 +150,26 @@ function onTaskClick(e){
         removeTask(e.target.parentElement.parentElement.parentElement)
     }
     else{
-        console.log('clicked')
+        setItemToEdit(e.target)
     }
 }
+
+// function to edit task & priority
+function setItemToEdit(task){
+    isEditMode = true
+    ul.querySelectorAll('li')
+    .forEach((i) => i.classList.remove('edit-mode'))
+
+    task.classList.add('edit-mode');
+    submitBtn.style.color = 'white'
+    submitBtn.style.backgroundColor = '#22bb22'
+    submitBtn.innerHTML = '<i class="bi bi-pencil"></i> Update Task'
+    const editedTask = task.firstChild.textContent
+    taskInput.value = editedTask
+    const editedPriority = task.lastChild.textContent
+    priorityInput.value = editedPriority
+}
+
 //removing single task from DOM
 function removeTask(task){
     if(confirm('Are you sure?')){
@@ -184,6 +215,10 @@ function UIchecker(){
     }
     taskInput.value = ''
     priorityInput.value = ''
+
+    submitBtn.innerHTML = '<i class="bi bi-plus"></i> Add item'
+    submitBtn.style.backgroundColor = '#3498db'
+    isEditMode = false
 }
 
 

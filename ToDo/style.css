@@ -112,3 +112,8 @@ h4{
     background-color: inherit;
     border: none;
 }
+
+
+.edit-mode{
+    color: red;
+}
