@@ -144,8 +144,6 @@ function removeTask(task){
     if(confirm('Are you sure?')){
         task.remove()
         const taskItem = task.firstChild.textContent
-        console.log(taskItem);
-        console.log(task);
         removeTaskFromStorage(taskItem)
     }
 }
@@ -184,6 +182,8 @@ function UIchecker(){
     }else{
         Todo.style.display = 'block'
     }
+    taskInput.value = ''
+    priorityInput.value = ''
 }
 
 
