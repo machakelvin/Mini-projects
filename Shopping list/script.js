@@ -20,6 +20,17 @@ function onAddItemSubmit(e){
         alert('Please add an item')
         return
     }
+
+    //check for edit mode
+    if(isEditMode){
+        const itemToEdit = itemList.querySelector('.edit-mode')
+
+        removeItemFromStorage(itemToEdit.textContent)
+        itemToEdit.classList.remove('edit-mode')
+        itemToEdit.remove()
+        isEditMode = false
+    }
+
     //create item DOM
     addItemToDOM(newItem)
 
@@ -150,6 +161,7 @@ function filterItems(e){
 
 // removes the filter & clear btn on load
 function checkUI (){
+    itemInput.value = ''
     const items = itemList.querySelectorAll('li')
     
     if(items.length === 0){
@@ -164,6 +176,9 @@ function checkUI (){
         filter.style.display = 'none'
         
     }
+    formBtn.innerHTML = '<i class="bi bi-plus"></i> Add item'
+    formBtn.style.backgroundColor = '#3498db'
+    isEditMode = false
 }
 
 
