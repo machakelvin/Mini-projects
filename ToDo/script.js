@@ -135,11 +135,36 @@ function onTaskClick(e){
     if(e.target.parentElement.classList.contains('removeTask')){
         removeTask(e.target.parentElement.parentElement.parentElement)
     }
+    else{
+        console.log('clicked')
+    }
 }
 //removing single task from DOM
 function removeTask(task){
     if(confirm('Are you sure?')){
         task.remove()
+        const taskItem = task.firstChild.textContent
+        console.log(taskItem);
+        console.log(task);
+        removeTaskFromStorage(taskItem)
+    }
+}
+// Removing task from local storage
+function removeTaskFromStorage(item) {
+    let tasksFromStorage = getTaskFromStorage();
+    let prioritiesFromStorage = getPriorityFromStorage();
+
+    // Find the index of the item to be removed
+    const index = tasksFromStorage.indexOf(item);
+
+    // Remove the item and its corresponding priority
+    if (index !== -1) {
+        tasksFromStorage.splice(index, 1);
+        prioritiesFromStorage.splice(index, 1);
+
+        // Update local storage
+        localStorage.setItem('tasks', JSON.stringify(tasksFromStorage));
+        localStorage.setItem('priority', JSON.stringify(prioritiesFromStorage));
     }
 }
 
