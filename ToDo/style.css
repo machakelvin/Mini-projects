@@ -34,6 +34,13 @@ header .clear-btn{
     height: 500px;
 }
 
+/* container in mobile view */
+@media (max-width: 480px){
+    .container{
+        margin: 10px;
+    }
+}
+
 /* start input box for task and priority */
 #form-input{
     display: grid;
