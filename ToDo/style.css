@@ -121,6 +121,13 @@ h4{
 }
 
 
+.note{
+    margin-top: 20px;
+    text-align: center;
+    font-style: italic;
+    font-weight: lighter;
+}
+
 .edit-mode{
     color: red;
 }

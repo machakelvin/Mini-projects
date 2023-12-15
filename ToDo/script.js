@@ -5,6 +5,7 @@ const ul = document.getElementById('tasks')
 const clearBtn = document.querySelector('.clear-btn')
 const Todo = document.querySelector('.taskHeading')
 const submitBtn = taskform.querySelector('#addTask')
+const note = document.querySelector('.info')
 let isEditMode = false
 
 
@@ -210,8 +211,10 @@ function UIchecker(){
     const task = ul.querySelectorAll('li')
     if(task.length === 0){
         Todo.style.display = 'none'
+        note.style.display = 'none'
     }else{
         Todo.style.display = 'block'
+        note.style.display = 'block'
     }
     taskInput.value = ''
     priorityInput.value = ''
