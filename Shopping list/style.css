@@ -2,11 +2,7 @@
     padding: 0;
     margin: 0;
 }
-body{
-    display: grid;
-    place-items: center;
-    background-color: aliceblue;
-}
+
 
 header h1{
     display: flex;
@@ -15,12 +11,26 @@ header h1{
     letter-spacing: 2px;
 }
 
+.container{
+    position: relative;
+    top: 20px;
+    margin-left: 100px;
+    margin-right: 100px;
+    height: max-content;
+    overflow-x: hidden;
+}
+/* container in mobile view */
+@media (max-width: 480px){
+    .container{
+        margin: 0px;
+    }
+}
+
 #item-form{
     margin-top: 20px;
     padding: 20px;
-    width: 500px;
-    display: grid;
-    place-items: center;
+    /* display: grid;
+    place-items: center; */
 }
 
 .form-input{
@@ -92,7 +102,12 @@ li button{
     border-radius: 8px;
 }
 
-
+.note{
+    margin-top: 20px;
+    text-align: center;
+    font-style: italic;
+    font-weight: lighter;
+}
 
 .edit-mode{
     color: red;

@@ -4,6 +4,7 @@ const itemList = document.getElementById('item-list')
 const clearBtn = document.getElementById('clear')
 const filter = document.querySelector('.filter')
 const formBtn = itemForm.querySelector('.btn')
+const note = document.querySelector('.info')
 let isEditMode = false;
 
 function displayItems(){
@@ -167,9 +168,11 @@ function checkUI (){
     if(items.length === 0){
         clearBtn.style.display = 'none'
         filter.style.display = 'none'
+        note.style.display = 'none'
     }else{
         clearBtn.style.display = 'block'
         filter.style.display = 'block'
+        note.style.display = 'block'
     }
     if(items.length && filter.value){
         clearBtn.style.display = 'none'
