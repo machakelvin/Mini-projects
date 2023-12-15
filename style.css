@@ -41,7 +41,7 @@ header h1{
 
 
 .hero{
-    height: 50vh;
+    height: max-content;
     color: white;
     font-family: 'Josefin Sans', sans-serif;
     margin-top: 20px;
@@ -49,6 +49,14 @@ header h1{
     place-items: center;
     gap: 10;
 }
+
+@media (max-width: 480px){
+    .hero{
+        margin-left: 20px;
+        align-items: center;
+    }
+}
+
 
 .hero h2{
     font-weight: bold;
@@ -62,6 +70,7 @@ header h1{
     width: 350px;
 }
 .hero p{
+    margin-top: 20px;
     color: rgb(253, 114, 114);
     font-size: 18px;
 }
@@ -84,15 +93,28 @@ header h1{
 } 
 
 .projects{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    /* display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(2, auto);
     grid-column-gap: 10px;
-    grid-row-gap: 10px;
-        
+    grid-row-gap: 10px; */
+    display: flex;
+    justify-content: space-evenly;
+}
+@media (max-width: 480px){
+    .projects{
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
 }
 
+
+
 .project-card{
+    width: 320px;
+    margin: 10px;
     background-color: rgb(14, 14, 95);
     padding: 10px;
     display: flex;
