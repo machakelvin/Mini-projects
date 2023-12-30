@@ -30,6 +30,12 @@ function onAddItemSubmit(e){
         itemToEdit.classList.remove('edit-mode')
         itemToEdit.remove()
         isEditMode = false
+    }else{
+        if(checkIfItemExits(newItem)){
+            alert('Item already exits')
+
+            return
+        }
     }
 
     //create item DOM
@@ -95,6 +101,12 @@ function onItemClick(e){
     else{
         setItemToEdit(e.target)
     }
+}
+
+//checks if item is already listed
+function checkIfItemExits(item){
+    const itemsFromStorage = getItemFromStorage()
+    return itemsFromStorage.includes(item)
 }
 
 function setItemToEdit(item){
