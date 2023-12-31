@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration template</title>
+    <!-- main stylesheet -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#">Home</a>
+            <a href="">Sign Up</a>
+            
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <div class="form-container">
+                <form action="" class="registration">
+                    <h3>Personal details</h3>
+                    <div class="row">
+
+                        <div class="input-container">
+                            <label for="fname">First name</label>
+                            <input type="text" name="fname" id="fname" placeholder="John">
+                        </div>
+                        <div class="input-container">
+                            <label for="Mname">Middle name</label>
+                            <input type="text" name="Mname" id="Mname" placeholder="Smith">
+                        </div>
+                        <div class="input-container">
+                            <label for="lname">Surname</label>
+                            <input type="text" name="lname" id="lname" placeholder="Doe">                          
+                        </div>
+                    </div>
+                    <div class="row reg">
+                        <div class="input-container">
+                            <label for="regno">Registration number</label>
+                            <input type="text" name="regno" id="regno" placeholder="2000-04-04924">
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="input-container">
+                            <label for="sex">Choose Gender</label>
+                            <select name="sex" id="sex">
+                                <option value="">Choose gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                        <div class="input-container">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" placeholder="someone@gmail.com">
+                        </div>
+                        <div class="input-container">
+                            <label for="district">District</label>
+                            <input type="text" name="district" id="district">
+                        </div>
+                        <div class="input-container">
+                            <label for="ward">Ward</label>
+                            <input type="text" name="ward" id="ward">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-container">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password">
+                            <span class="pass-message"></span>
+                        </div>
+                        <div class="input-container">
+                            <label for="cpassword">Confirm password</label>
+                            <input type="password" id="cpassword">
+                        </div>
+                        <div class="error">
+                            <span class="error-message"></span>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
