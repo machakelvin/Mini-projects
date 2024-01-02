@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: #9e49ee;
+}
+
+
+.container{
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    top: 100px;
+}
+
+.hero{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero img{
+    margin-bottom: 10px;
+}
+.hero p{
+    margin-bottom: 10px;
+}
+.hero button{
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: antiquewhite;
+    border: 0;
+}
+
+
+.joke{
+    padding: 10px;
+    background-color: antiquewhite;
+    border: 0;
+}
